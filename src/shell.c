@@ -67,6 +67,7 @@ int main()
 
             if (inputArgs[0] == '\0')
                 continue;
+
             echo(inputArgs);
             continue;
         }
@@ -94,6 +95,7 @@ int main()
             strcat(command, inputArgs);
 
             pthread_create(&ptid, NULL, &exec_thread, (void *)command);
+            free(command);
             pthread_join(ptid, NULL);
             continue;
         }
@@ -113,7 +115,6 @@ int main()
             {
                 char *command = (char *)malloc(100);
                 strcpy(command, binPath);
-                // char *c_name = input;
                 strcat(command, input);
 
                 fgets(inputArgs, 100, stdin);
@@ -163,9 +164,12 @@ void prompt()
 {
     char *cwd = (char *)malloc(100);
     getcwd(cwd, 100);
+
     char *hostname = (char *)malloc(20);
     gethostname(hostname, 20);
+
     printf("\n[%s@%s]:%s > ", getenv("USER"), hostname, cwd);
+
     free(cwd);
     free(hostname);
     return;
@@ -194,6 +198,7 @@ void pwd()
     char *buffer = (char *)malloc(100);
     getcwd(buffer, 100);
     puts(buffer);
+    free(buffer);
     return;
 }
 
