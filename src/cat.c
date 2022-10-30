@@ -23,9 +23,9 @@ int main(int argc, char **argv) {
         isFile = 1;
     }
 
-    printf("%d\n", nFlag);
-    printf("%d\n", eFlag);
-    printf("%d\n", isFile);
+    // printf("%d\n", nFlag);
+    // printf("%d\n", eFlag);
+    // printf("%d\n", isFile);
 
     if (isFile == 0) {
         lineNo = take_input(nFlag, eFlag, lineNo);
