@@ -27,8 +27,6 @@ int main()
         prompt();
         scanf("%s", input);
 
-        // puts(input);
-
         if (strcmp(input, "exit") == 0)
             exit(0);
 
@@ -95,14 +93,12 @@ int main()
             strcat(command, inputArgs);
 
             pthread_create(&ptid, NULL, &exec_thread, (void *)command);
-            free(command);
             pthread_join(ptid, NULL);
             continue;
         }
 
         else
         {
-            // puts("process...");
             pid_t pid;
             pid = fork();
 
@@ -119,7 +115,6 @@ int main()
 
                 fgets(inputArgs, 100, stdin);
                 inputArgs = strsep(&inputArgs, "\n");
-                // puts(inputArgs);
 
                 if (inputArgs[0] == ' ')
                 {
@@ -146,8 +141,6 @@ int main()
             else
             {
                 wait(NULL);
-                // puts("...completed");
-                fflush(stdin);
                 fgets(input, 100, stdin);
                 continue;
             }
