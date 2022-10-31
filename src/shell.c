@@ -147,6 +147,7 @@ int main()
             {
                 wait(NULL);
                 // puts("...completed");
+                fflush(stdin);
                 fgets(input, 100, stdin);
                 continue;
             }
