@@ -9,6 +9,10 @@ int main(int argc, char **argv) {
     for (int i = 0; i < argc; i++) {
         if (strcmp(argv[i], "-i") == 0) iFlag = 1;
         if (strcmp(argv[i], "-v") == 0) vFlag = 1;
+        if (argv[i][0] == '-' && strcmp(argv[i], "-i") != 0 && strcmp(argv[i], "-v") != 0) {
+            puts("Illegal option!");
+            return 1;
+        }
     }
     
     if (argc <= 1) {

@@ -13,6 +13,10 @@ int main(int argc, char **argv) {
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "-d") == 0) dFlag = 1;
         if (strcmp(argv[i], "-r") == 0) rFlag = 1;
+        if (argv[i][0] == '-' && strcmp(argv[i], "-i") != 0 && strcmp(argv[i], "-v") != 0) {
+            puts("Illegal option!");
+            return 1;
+        }
     }
 
     if (dFlag == 1 && rFlag == 1) {

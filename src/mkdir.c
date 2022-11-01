@@ -26,6 +26,10 @@ int main(int argc, char **argv)
             mFlag = 1;
         if (strcmp(argv[i], "-v") == 0)
             vFlag = 1;
+        if (argv[i][0] == '-' && strcmp(argv[i], "-m") != 0 && strcmp(argv[i], "-v") != 0) {
+            puts("Illegal option");
+            return 1;
+        }
 
         if (mFlag == 1)
         {
@@ -54,7 +58,7 @@ int main(int argc, char **argv)
         {
             int status = mkdir(argv[i], S_IWRITE | S_IREAD);
             if (status != 0)
-                printf("%s\n", strerror(errno));
+                puts("Directory exists!");
 
             else if (vFlag == 1)
                 printf("mkdir: created directory '%s'\n", argv[i]);
@@ -65,7 +69,7 @@ int main(int argc, char **argv)
         {
             int status = mkdir(argv[i], S_IREAD | S_IEXEC);
             if (status != 0)
-                printf("%s\n", strerror(errno));
+                puts("Directory exists!");
 
             else if (vFlag == 1)
                 printf("mkdir: created directory '%s'\n", argv[i]);
@@ -76,7 +80,7 @@ int main(int argc, char **argv)
         {
             int status = mkdir(argv[i], S_IWRITE | S_IEXEC);
             if (status != 0)
-                printf("%s\n", strerror(errno));
+                puts("Directory exists!");
 
             else if (vFlag == 1)
                 printf("mkdir: created directory '%s'\n", argv[i]);
@@ -87,7 +91,7 @@ int main(int argc, char **argv)
         {
             int status = mkdir(argv[i], S_IREAD);
             if (status != 0)
-                printf("%s\n", strerror(errno));
+                puts("Directory exists!");
 
             else if (vFlag == 1)
                 printf("mkdir: created directory '%s'\n", argv[i]);
@@ -98,7 +102,7 @@ int main(int argc, char **argv)
         {
             int status = mkdir(argv[i], S_IWRITE);
             if (status != 0)
-                printf("%s\n", strerror(errno));
+                puts("Directory exists!");
 
             else if (vFlag == 1)
                 printf("mkdir: created directory '%s'\n", argv[i]);
@@ -109,7 +113,7 @@ int main(int argc, char **argv)
         {
             int status = mkdir(argv[i], S_IEXEC);
             if (status != 0)
-                printf("%s\n", strerror(errno));
+                puts("Directory exists!");
 
             else if (vFlag == 1)
                 printf("mkdir: created directory '%s'\n", argv[i]);
@@ -118,7 +122,7 @@ int main(int argc, char **argv)
         // RWX
         int status = mkdir(argv[i], S_IRWXU);
         if (status != 0)
-            printf("%s\n", strerror(errno));
+            puts("Directory exists!");
 
         else if (vFlag == 1)
             printf("mkdir: created directory '%s'\n", argv[i]);

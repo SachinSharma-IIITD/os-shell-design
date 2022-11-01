@@ -20,12 +20,12 @@ int main(int argc, char **argv) {
             eFlag = 1;
             continue;
         }
+        if (argv[i][0] == '-' && strcmp(argv[i], "-n") != 0 && strcmp(argv[i], "-E") != 0 && strlen(argv[i]) > 1) {
+            puts("Illegal option!");
+            return 1;
+        }
         isFile = 1;
     }
-
-    // printf("%d\n", nFlag);
-    // printf("%d\n", eFlag);
-    // printf("%d\n", isFile);
 
     if (isFile == 0) {
         lineNo = take_input(nFlag, eFlag, lineNo);

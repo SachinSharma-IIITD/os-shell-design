@@ -27,6 +27,10 @@ int main(int argc, char **argv)
             lFlag = 1;
             continue;
         }
+        if (argv[i][0] == '-' && strcmp(argv[i], "-a") != 0 && strcmp(argv[i], "-l") != 0) {
+            puts("Illegal option!");
+            return 1;
+        }
         dirPath = argv[i];
     }
 
@@ -34,7 +38,7 @@ int main(int argc, char **argv)
 
     if (dir == NULL)
     {
-        puts("Directory couldn't be opened!");
+        printf("[%s]: Directory couldn't be opened!\n", dirPath);
         return 1;
     }
 
